@@ -6,26 +6,28 @@
   <title>Tom Henly</title>
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Passsword -->
-<script>
-  var password = prompt("This site is in progress. Please enter the access password:");
-  var correctPassword = "tdh"; // <-- change to your password
 
-  if (password !== correctPassword) {
-    document.body.innerHTML = `
-      <div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:Arial,sans-serif;text-align:center;">
-        <div>
-          <h1>Access Denied</h1>
-          <p>This site is currently under development.</p>
-        </div>
-      </div>`;
-    document.close();
-  }
-</script>
-
-  
 </head>
 <body>
+
+    <!-- Passsword -->
+ <script>
+    // Define the correct password
+    var correctPassword = "tdh";
+
+    // Prompt user for password
+    var password = prompt("This site is in progress. Please enter the password:");
+
+    // If incorrect password, block access
+    if (password !== correctPassword) {
+      document.write("<h1>Access Denied</h1><p>You do not have permission to view this site.</p>");
+      document.close(); // Prevents the rest of the site from loading
+    }
+  </script>
+
+  <!-- Your real website content goes BELOW this script -->
+
+  
   <!-- Navigation -->
   <header>
     <nav>
