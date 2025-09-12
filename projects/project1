@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>[Project Title] | Portfolio</title>
+  <title>Tom Henly | The Glassworks</title>
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
   <header>
     <nav>
-      <h1 class="logo">Your Name</h1>
+      <h1 class="logo">Tom Henly</h1>
       <ul class="nav-links">
         <li><a href="../index.html#home">Home</a></li>
         <li><a href="../index.html#work">Selected Work</a></li>
