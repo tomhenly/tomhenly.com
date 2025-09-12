@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tom Henly</title>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Passsword -->
+<script>
+  var password = prompt("This site is in progress. Please enter the access password:");
+  var correctPassword = "tdh"; // <-- change to your password
+
+  if (password !== correctPassword) {
+    document.body.innerHTML = `
+      <div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:Arial,sans-serif;text-align:center;">
+        <div>
+          <h1>Access Denied</h1>
+          <p>This site is currently under development.</p>
+        </div>
+      </div>`;
+    document.close();
+  }
+</script>
+
+  
 </head>
 <body>
   <!-- Navigation -->
