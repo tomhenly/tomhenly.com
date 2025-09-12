@@ -5,112 +5,181 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tom Henly</title>
   <link rel="stylesheet" href="style.css" />
-
-
+  <style>
+    /* Styles for the password screen */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Helvetica, Arial, sans-serif;
+      height: 100%;
+    }
+    #password-screen {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f5f5f5;
+    }
+    #password-box {
+      background: white;
+      padding: 2rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 320px;
+      width: 100%;
+    }
+    #password-box h1 {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+    #password-box input {
+      padding: 0.6rem;
+      width: 100%;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+    }
+    #password-box button {
+      padding: 0.6rem 1rem;
+      width: 100%;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    #password-box button:hover {
+      background: #333;
+    }
+    #error-msg {
+      color: red;
+      font-size: 0.9rem;
+      display: none;
+      margin-top: 0.5rem;
+    }
+    #site-content {
+      display: none; /* hidden until correct password */
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Passsword -->
- <script>
-    // Define the correct password
-    var correctPassword = "tdh";
+  <!-- Password Screen -->
+  <div id="password-screen">
+    <div id="password-box">
+      <h1>Portfolio Access</h1>
+      <input type="password" id="password-input" placeholder="Enter password" />
+      <button onclick="checkPassword()">Enter</button>
+      <div id="error-msg">Incorrect password. Try again.</div>
+    </div>
+  </div>
 
-    // Prompt user for password
-    var password = prompt("This site is in progress. Please enter the password:");
+  <!-- Your Real Site Content (hidden until unlocked) -->
+  <div id="site-content">
 
-    // If incorrect password, block access
-    if (password !== correctPassword) {
-      document.write("<h1>Access Denied</h1><p>You do not have permission to view this site.</p>");
-      document.close(); // Prevents the rest of the site from loading
+    <!-- Navigation -->
+    <header>
+      <nav>
+        <h1 class="logo">Tom Henly</h1>
+        <button class="menu-toggle">☰</button>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#work">Selected Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="hero-text">
+        <h2>Tom Henly</h2>
+        <p>Architectural Assistant | Designer</p>
+      </div>
+    </section>
+
+    <!-- Selected Work (scroll style like BIG.dk) -->
+    <section id="work" class="work-scroll">
+      <h2>Selected Work</h2>
+
+      <div class="project-block">
+        <a href="projects/project1.html">
+          <img src="images/Boat Perspective.png" alt="The Glassworks Thumbnail" />
+          <div class="project-info">
+            <h3>The Glassworks</h3>
+            <p>BSc / 2024 / Craft Rehabilitation Centre</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="project-block">
+        <a href="projects/project2.html">
+          <img src="images/project2-hero.jpg" alt="Project 2 Thumbnail" />
+          <div class="project-info">
+            <h3>Project Title 2</h3>
+            <p>Type / Year / Short line</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="project-block">
+        <a href="projects/project3.html">
+          <img src="images/project3-hero.jpg" alt="Project 3 Thumbnail" />
+          <div class="project-info">
+            <h3>Project Title 3</h3>
+            <p>Competition / 2021 / University</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+      <h2>About</h2>
+      <p>
+        Nonsequam ellacit videri offici blab ius nam doluptat.
+        Ribus ent voloribus eaquid ent aut omnis etuscim sunt arum as...
+        <!-- Replace with real bio -->
+      </p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p>Email me: <a href="mailto:tom@tomhenly.com">tom@tomhenly.com</a></p>
+      <p>
+        <a href="https://linkedin.com/in/tomhenly" target="_blank">LinkedIn</a> | 
+        <a href="https://instagram.com/_tomhenly" target="_blank">Instagram</a>
+      </p>
+    </section>
+
+    <footer>
+      <p>© 2025 Tom Henly</p>
+    </footer>
+  </div>
+
+  <!-- Password Logic -->
+  <script>
+    function checkPassword() {
+      var correctPassword = "tdh"; // <-- your password
+      var input = document.getElementById("password-input").value;
+
+      if (input === correctPassword) {
+        document.getElementById("password-screen").style.display = "none";
+        document.getElementById("site-content").style.display = "block";
+      } else {
+        document.getElementById("error-msg").style.display = "block";
+      }
     }
   </script>
 
-  <!-- Your real website content goes BELOW this script -->
-
-  
-  <!-- Navigation -->
-  <header>
-    <nav>
-      <h1 class="logo">Tom Henly</h1>
-      <button class="menu-toggle">☰</button>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#work">Selected Work</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="hero-text">
-      <h2>Tom Henly</h2>
-      <p>Architectural Assistant | Designer</p>
-    </div>
-  </section>
-
-  <!-- Selected Work (scroll style like BIG.dk) -->
-<section id="work" class="work-scroll">
-  <h2>Selected Work</h2>
-
-  <div class="project-block">
-    <a href="projects/project1.html">
-      <img src="images/Boat Perspective.png" alt="The Glassworks Thumbnail" />
-      <div class="project-info">
-        <h3>The Glassworks</h3>
-        <p>BSc / 2024 / Craft Rehabilitation Centre</p>
-      </div>
-    </a>
-  </div>
-
-  <div class="project-block">
-    <a href="projects/project2.html">
-      <img src="images/project2-hero.jpg" alt="Project 2 Thumbnail" />
-      <div class="project-info">
-        <h3>Project Title 2</h3>
-        <p>Type / Year / Short line</p>
-      </div>
-    </a>
-  </div>
-
-  <div class="project-block">
-    <a href="projects/project3.html">
-      <img src="images/project3-hero.jpg" alt="Project 3 Thumbnail" />
-      <div class="project-info">
-        <h3>Project Title 3</h3>
-        <p>Competition / 2021 / University</p>
-      </div>
-    </a>
-  </div>
-</section>
-
-  <!-- About -->
-  <section id="about" class="about">
-    <h2>About</h2>
-    <p>
-     Nonsequam ellacit videri offici blab ius nam doluptat.
-Ribus ent voloribus eaquid ent aut omnis etuscim sunt arum as consequi resti remolor mi, nonsendent eum ant.
-Sapis et, tem et, corem comniat fugia simpore rerumquis sequi nectur aut rem nobis pro entis volleca boratis reped mosam sum laut ut labo. Nequis dita sit, impos acearchit eume ventia con net venis quiaspident pro que pellat quo blaut et que pelestiae. Et qui sum fuga. Nem. Et ut que corit doluptat minullique pre voluptati comni ute consenis dolor aut et, inullatempos alit, et, con cuptio. Berum quam acid quost, audaest am quibus cupta is dicit ut aribus entium fugiatur maion recus dolupta delibuscil in porumquatur autetur mo maiore, con plaboris que moluptus.
-Quaerfe rumquo que re alis niat.
-
-    </p>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="contact">
-    <h2>Contact</h2>
-    <p>Email me: <a href="mailto:tom@tomhenly.com">tom@tomhenly.com</a></p>
-    <p>
-      <a href="https://linkedin.com/in/tomhenly" target="_blank">LinkedIn</a> | 
-      <a href="https://instagram.com/_tomhenly" target="_blank">Instagram</a>
-    </p>
-  </section>
-
-  <footer>
-    <p>© 2025 Tom Henly</p>
-  </footer>
-
+  <!-- Your site JS -->
   <script src="script.js"></script>
 </body>
 </html>
