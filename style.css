@@ -154,3 +154,47 @@ footer {
   .nav-links { display: none; flex-direction: column; margin-top: 1rem; }
   .nav-links.active { display: flex; }
 }
+
+/* BIG.dk style scroll projects */
+.work-scroll {
+  margin-top: 2rem;
+}
+
+.project-block {
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.project-block img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: none;
+}
+
+.project-info {
+  margin-top: 0.5rem;
+  padding: 0 1rem;
+}
+
+.project-info h3 {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.project-info p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #555;
+}
+
+/* Hover effect for link */
+.project-block a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-block:hover img {
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
