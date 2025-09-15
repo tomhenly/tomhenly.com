@@ -3,20 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Archive - Tom Henly</title>
+  <title>Archive - Tom Henly</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
   <main>
-    <h1>Project Archive</h1>
-    <p>A collection of past architecture, design and creative work.</p>
+    <h1>Archive</h1>
+    <p class="tagline">
+      A selection of past projects across design, fabrication, and creative practice.
+    </p>
 
-    <!-- Example placeholder images -->
-    <img src="yourimage1.jpg" alt="Project 1" width="100%">
-    <img src="yourimage2.jpg" alt="Project 2" width="100%">
-    <img src="yourimage3.jpg" alt="Project 3" width="100%">
+    <!-- Archive Feed -->
+    <section class="archive-feed">
+      <article class="project">
+        <div class="project-logo">
+          <img src="images/logos/logo1.png" alt="Project Logo 1">
+        </div>
+        <img class="project-image" src="images/project1.jpg" alt="Project 1">
+        <h3>Project Title One</h3>
+        <p>Brief description of the project and your role in it.</p>
+      </article>
 
-    <p><a href="index.html">← Back to Home</a></p>
+      <article class="project">
+        <div class="project-logo">
+          <img src="images/logos/logo2.png" alt="Project Logo 2">
+        </div>
+        <img class="project-image" src="images/project2.jpg" alt="Project 2">
+        <h3>Project Title Two</h3>
+        <p>Brief description of the project and your role in it.</p>
+      </article>
+
+      <article class="project">
+        <div class="project-logo">
+          <img src="images/logos/logo3.png" alt="Project Logo 3">
+        </div>
+        <img class="project-image" src="images/project3.jpg" alt="Project 3">
+        <h3>Project Title Three</h3>
+        <p>Brief description of the project and your role in it.</p>
+      </article>
+    </section>
   </main>
+
+  <footer>
+    <p><a href="index.html">← Back to Home</a></p>
+    © <span id="year"></span> Tom Henly
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
