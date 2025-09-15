@@ -10,10 +10,10 @@ body {
   line-height: 1.6;
   color: #222;
   background-color: #fafafa;
-  text-align: left; /* ← LEFT ALIGNED */
+  text-align: left;
 }
 
-/* Type */
+/* Typography */
 h1, h2, h3 {
   font-family: 'Space Grotesk', sans-serif;
   color: #111;
@@ -44,13 +44,13 @@ h1, h2, h3 {
 }
 
 /* Skills Grid */
-.skills-grid {
-  margin: 3em 0;
-}
+.skills-grid { margin: 3em 0; }
 .skills-grid h2 {
   margin-bottom: 1em;
   color: #007acc;
 }
+
+/* Grid System */
 .grid {
   display: grid;
   gap: 20px;
@@ -60,6 +60,7 @@ h1, h2, h3 {
   position: relative;
   overflow: hidden;
   border-radius: 6px;
+  cursor: pointer;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
@@ -72,18 +73,21 @@ h1, h2, h3 {
   width: 100%;
   display: block;
   border-radius: 6px;
+  transition: transform 0.4s ease;
 }
 
-/* Overlay Captions */
+/* Hover Overlay Effect */
 .overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0,122,204,0.75); /* translucent brand blue */
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,122,204,0.75); /* translucent brand blue overlay */
   color: white;
-  padding: 0.6em 1em;
-  text-align: left;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 1em;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 .overlay h3 {
   margin: 0;
@@ -91,10 +95,16 @@ h1, h2, h3 {
   font-weight: 500;
 }
 
-/* Contact Section */
-.contact {
-  margin: 3em 0;
+/* Show overlay + zoom img on hover */
+.grid-item:hover img {
+  transform: scale(1.05);
 }
+.grid-item:hover .overlay {
+  opacity: 1;
+}
+
+/* Contact Section */
+.contact { margin: 3em 0; }
 .contact h2 {
   margin-bottom: 0.5em;
   color: #007acc;
@@ -104,9 +114,7 @@ h1, h2, h3 {
   text-decoration: none;
   font-weight: 500;
 }
-.contact a:hover {
-  text-decoration: underline;
-}
+.contact a:hover { text-decoration: underline; }
 
 /* Footer */
 footer {
