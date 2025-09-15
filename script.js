@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Update footer year
+  // Footer year update
   document.getElementById("year").textContent = new Date().getFullYear();
 
   // Typing animation
@@ -11,9 +11,21 @@ document.addEventListener("DOMContentLoaded", () => {
     if (i < text.length) {
       typingEl.textContent += text.charAt(i);
       i++;
-      setTimeout(typeWriter, 120); // speed in ms
+      setTimeout(typeWriter, 120);
     }
   }
-
   typeWriter();
+
+  // Intersection Observer for scroll fade-in
+  const items = document.querySelectorAll('.grid-item');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // run once
+      }
+    });
+  }, { threshold: 0.2 });
+
+  items.forEach(item => observer.observe(item));
 });
