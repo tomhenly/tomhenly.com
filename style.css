@@ -1,124 +1,46 @@
-/* Reset */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ... keep previous styles ... */
 
-/* Layout */
-body {
-  font-family: 'Inter', sans-serif;
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 0 20px;
-  line-height: 1.6;
-  color: #222;
-  background-color: #fafafa;
+/* Archive Button */
+.archive-btn {
+  margin-top: 2em;
+  text-align: left; /* aligns with grid */
+}
+.button {
+  display: inline-block;
+  padding: 10px 18px;
+  background: #007acc;
+  color: white;
+  font-weight: 500;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.button:hover { background: #005a99; }
+
+/* Archive Feed */
+.archive-feed {
+  margin: 3em 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+}
+.project {
   text-align: left;
 }
-
-/* Typography */
-h1, h2, h3 {
-  font-family: 'Space Grotesk', sans-serif;
-  color: #111;
-}
-
-/* Hero Typing Animation */
-#typing-text {
-  display: inline-block;
-  font-size: 3rem;
-  font-weight: 600;
-  border-right: 2px solid #007acc;
-  white-space: nowrap;
-  overflow: hidden;
-  margin-bottom: 0.3em;
-  animation: blink 0.7s infinite step-end alternate;
-}
-
-@keyframes blink {
-  from { border-color: transparent; }
-  to { border-color: #007acc; }
-}
-
-.tagline {
-  font-size: 1.2rem;
-  margin-bottom: 2em;
-  color: #444;
-  max-width: 650px;
-}
-
-/* Skills Grid */
-.skills-grid { margin: 3em 0; }
-.skills-grid h2 {
-  margin-bottom: 1em;
-  color: #007acc;
-}
-
-/* Grid System */
-.grid {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-.grid-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 6px;
-  cursor: pointer;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.grid-item.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.grid-item img {
-  width: 100%;
-  display: block;
-  border-radius: 6px;
-  transition: transform 0.4s ease;
-}
-
-/* Hover Overlay Effect */
-.overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,122,204,0.75); /* translucent brand blue overlay */
-  color: white;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  padding: 1em;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-.overlay h3 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-/* Show overlay + zoom img on hover */
-.grid-item:hover img {
-  transform: scale(1.05);
-}
-.grid-item:hover .overlay {
-  opacity: 1;
-}
-
-/* Contact Section */
-.contact { margin: 3em 0; }
-.contact h2 {
+.project-logo img {
+  height: 40px;
   margin-bottom: 0.5em;
-  color: #007acc;
 }
-.contact a {
-  color: #007acc;
-  text-decoration: none;
-  font-weight: 500;
+.project-image {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 0.6em;
 }
-.contact a:hover { text-decoration: underline; }
-
-/* Footer */
-footer {
-  margin-top: 2em;
-  font-size: 0.85rem;
-  color: #777;
+.project h3 {
+  margin-top: 0.2em;
+  font-size: 1.3rem;
+}
+.project p {
+  max-width: 700px;
+  color: #444;
 }
