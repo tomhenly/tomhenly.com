@@ -1,13 +1,26 @@
-/* General Layout */
+/* Reset-ish */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Layout */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  max-width: 750px;
+  font-family: 'Inter', sans-serif;
+  max-width: 900px;
   margin: 60px auto;
   padding: 0 20px;
   line-height: 1.6;
   color: #222;
   background-color: #fafafa;
   text-align: center;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  color: #111;
 }
 
 /* Hero Typing Animation */
@@ -29,50 +42,45 @@ body {
 
 .tagline {
   font-size: 1.2rem;
-  margin-bottom: 2em;
+  margin-bottom: 3em;
   color: #444;
 }
 
-/* Skills Section */
-.skills {
-  margin: 3em 0;
-  text-align: left;
+/* Skills Grid */
+.skills-grid {
+  margin: 4em 0;
 }
-.skills h2 {
-  text-align: center;
-  margin-bottom: 1em;
+.skills-grid h2 {
+  margin-bottom: 1.5em;
+  color: #007acc;
 }
-.skills ul {
-  list-style-type: none;
-  padding: 0;
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
-.skills li {
-  margin-bottom: 1em;
+.grid-item {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1em;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
-
-/* About Section */
-.about {
-  margin: 3em 0;
-  font-size: 1rem;
-  color: #333;
+.grid-item.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
-
-/* Archive Link Button */
-.archive {
-  margin: 2em 0;
-}
-.button {
-  display: inline-block;
-  padding: 10px 18px;
-  background: #007acc;
-  color: white;
-  font-weight: 500;
+.grid-item img {
+  width: 100%;
   border-radius: 5px;
-  text-decoration: none;
-  transition: background 0.2s;
+  margin-bottom: 0.8em;
 }
-.button:hover {
-  background: #005a99;
+.grid-item h3 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: #111;
 }
 
 /* Contact Section */
@@ -80,11 +88,13 @@ body {
   margin: 3em 0;
 }
 .contact h2 {
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
+  color: #007acc;
 }
 .contact a {
   color: #007acc;
   text-decoration: none;
+  font-weight: 500;
 }
 .contact a:hover {
   text-decoration: underline;
@@ -93,6 +103,6 @@ body {
 /* Footer */
 footer {
   margin-top: 3em;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #777;
 }
