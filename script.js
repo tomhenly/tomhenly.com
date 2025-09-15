@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Footer year update
+  // Update footer year
   document.getElementById("year").textContent = new Date().getFullYear();
 
   // Typing animation
@@ -16,13 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   typeWriter();
 
-  // Intersection Observer for scroll fade-in
+  // Fade-in on scroll for grid
   const items = document.querySelectorAll('.grid-item');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // run once
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.2 });
