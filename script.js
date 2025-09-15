@@ -16,7 +16,7 @@ themeToggle.addEventListener("click", () => {
 });
 
 // Typing animation
-const text = "Hello, I’m Your Name 👋";
+const text = "Hello, I’m Tom Henly 👋";
 const typingEl = document.getElementById("typing-text");
 
 let i = 0;
