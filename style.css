@@ -1,46 +1,47 @@
-/* ... keep previous styles ... */
-
-/* Archive Button */
-.archive-btn {
-  margin-top: 2em;
-  text-align: left; /* aligns with grid */
-}
-.button {
-  display: inline-block;
-  padding: 10px 18px;
-  background: #007acc;
-  color: white;
-  font-weight: 500;
-  border-radius: 5px;
+/* Project Feed Links */
+.project a {
+  display: block;
   text-decoration: none;
-  transition: background 0.2s;
+  color: inherit;
 }
-.button:hover { background: #005a99; }
+.project a:hover h3 {
+  color: #007acc;
+}
 
-/* Archive Feed */
-.archive-feed {
-  margin: 3em 0;
+/* Project Detail Page */
+.project-meta {
   display: flex;
-  flex-direction: column;
-  gap: 3em;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 1em;
+  font-size: 0.9rem;
+  color: #666;
 }
-.project {
-  text-align: left;
-}
-.project-logo img {
+.detail-logo {
   height: 40px;
-  margin-bottom: 0.5em;
 }
-.project-image {
+.project-intro {
+  margin-bottom: 1.5em;
+  color: #444;
+  max-width: 700px;
+}
+.project-hero {
   width: 100%;
   border-radius: 6px;
-  margin-bottom: 0.6em;
+  margin-bottom: 1.5em;
 }
-.project h3 {
-  margin-top: 0.2em;
-  font-size: 1.3rem;
+.project-gallery {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin: 2em 0;
 }
-.project p {
+.project-gallery img {
+  width: 100%;
+  border-radius: 6px;
+}
+.project-text {
   max-width: 700px;
-  color: #444;
+  color: #333;
+  margin-bottom: 2em;
 }
