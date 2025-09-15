@@ -1,30 +1,19 @@
-// Update footer year
-document.getElementById("year").textContent = new Date().getFullYear();
+document.addEventListener("DOMContentLoaded", () => {
+  // Update footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-// Theme toggle
-const body = document.body;
-const themeToggle = document.getElementById("theme-toggle");
+  // Typing animation
+  const text = "Tom Henly";
+  const typingEl = document.getElementById("typing-text");
+  let i = 0;
 
-// Load saved theme
-if (localStorage.getItem("theme") === "dark") {
-  body.classList.add("dark");
-}
-
-themeToggle.addEventListener("click", () => {
-  body.classList.toggle("dark");
-  localStorage.setItem("theme", body.classList.contains("dark") ? "dark" : "light");
-});
-
-// Typing animation
-const text = "Hello, I’m Tom Henly 👋";
-const typingEl = document.getElementById("typing-text");
-
-let i = 0;
-function typeWriter() {
-  if (i < text.length) {
-    typingEl.textContent += text.charAt(i);
-    i++;
-    setTimeout(typeWriter, 100); // speed of typing
+  function typeWriter() {
+    if (i < text.length) {
+      typingEl.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, 120); // Adjust speed here
+    }
   }
-}
-typeWriter();
+
+  typeWriter();
+});
