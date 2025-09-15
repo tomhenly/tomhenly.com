@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Update footer year
+  // Footer year
   document.getElementById("year").textContent = new Date().getFullYear();
 
   // Typing animation
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   typeWriter();
 
-  // Fade-in on scroll for grid
+  // Scroll-in fade effect
   const items = document.querySelectorAll('.grid-item');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
