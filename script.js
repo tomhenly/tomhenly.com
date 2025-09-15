@@ -1,15 +1,30 @@
-// Responsive Hamburger Menu
-const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
+// Update footer year
+document.getElementById("year").textContent = new Date().getFullYear();
 
-menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
+// Theme toggle
+const body = document.body;
+const themeToggle = document.getElementById("theme-toggle");
+
+// Load saved theme
+if (localStorage.getItem("theme") === "dark") {
+  body.classList.add("dark");
+}
+
+themeToggle.addEventListener("click", () => {
+  body.classList.toggle("dark");
+  localStorage.setItem("theme", body.classList.contains("dark") ? "dark" : "light");
 });
 
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-  });
-});
+// Typing animation
+const text = "Hello, I’m Your Name 👋";
+const typingEl = document.getElementById("typing-text");
+
+let i = 0;
+function typeWriter() {
+  if (i < text.length) {
+    typingEl.textContent += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 100); // speed of typing
+  }
+}
+typeWriter();
