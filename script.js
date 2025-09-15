@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (i < text.length) {
       typingEl.textContent += text.charAt(i);
       i++;
-      setTimeout(typeWriter, 120); // Adjust speed here
+      setTimeout(typeWriter, 120); // speed in ms
     }
   }
 
