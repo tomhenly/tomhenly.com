@@ -2,59 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tom Henly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Portfolio</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <header>
+    <h1>Your Name</h1>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="mailto:you@example.com">Contact</a>
+    </nav>
+  </header>
+
   <main>
-    <!-- Hero -->
-    <h1 id="typing-text"></h1>
-    <p class="tagline">
-      Freelance designer & maker with experience in architecture, model making, and creative projects.
-    </p>
-
-    <!-- Skills Grid -->
-    <section class="skills-grid">
-      <h2>What I Do</h2>
-      <div class="grid">
-        <a class="grid-item" href="archive.html">
-          <img src="images/Workshop Kiln Interior.png" alt="Design and Architecture">
-          <div class="overlay"><h3>Design & Architecture</h3></div>
-        </a>
-        <a class="grid-item" href="archive.html">
-          <img src="images/DSCF3360-Edit.jpg" alt="Fabrication and Model Making">
-          <div class="overlay"><h3>Fabrication & Making</h3></div>
-        </a>
-        <a class="grid-item" href="archive.html">
-          <img src="images/Diego Stand.tif" alt="Creative and Technical">
-          <div class="overlay"><h3>Creative & Technical</h3></div>
-        </a>
-        <a class="grid-item" href="archive.html">
-          <img src="images/London Map.jpg" alt="Research and Writing">
-          <div class="overlay"><h3>Research & Writing</h3></div>
-        </a>
-      </div>
-
-      <!-- Archive Button -->
-      <div class="archive-btn">
-        <a class="button" href="archive.html">View Full Archive →</a>
-      </div>
+    <section class="intro">
+      <h2>Designing experiences with clarity and proportion</h2>
+      <p>Scroll down to explore projects. Click any to see details.</p>
     </section>
 
-    <!-- Contact -->
-    <section class="contact">
-      <h2>Contact</h2>
-      <p>
-        📧 <a href="mailto:tom@tomhenly.com">tom@tomhenly.com</a><br/>
-        💼 <a href="https://www.linkedin.com/in/tomhenly" target="_blank">LinkedIn</a>
-      </p>
+    <section id="projects" class="gallery">
+      <div class="card" data-project="project1">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80" alt="Project 1" />
+        <h3>Project One</h3>
+      </div>
+      <div class="card" data-project="project2">
+        <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1000&q=80" alt="Project 2" />
+        <h3>Project Two</h3>
+      </div>
     </section>
   </main>
 
+  <!-- Horizontal Project Viewer -->
+  <div id="project-viewer" class="project-viewer hidden">
+    <button id="closeViewer">✕</button>
+    <div class="slider">
+      <div class="slide"><img id="slide1" src="" alt=""/></div>
+      <div class="slide"><img id="slide2" src="" alt=""/></div>
+      <div class="slide"><img id="slide3" src="" alt=""/></div>
+    </div>
+  </div>
+
   <footer>
-    © <span id="year"></span> Tom Henly
+    <p>© <span id="year"></span> Your Name</p>
   </footer>
 
   <script src="script.js"></script>
