@@ -1,51 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Tom Henly — Portfolio Carousel</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <header>
-    <h1>Your Name</h1>
-    <nav>
-      <a href="#projects">Projects</a>
-      <a href="mailto:you@example.com">Contact</a>
-    </nav>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="brand">Tom Henly</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section class="intro">
-      <h2>Designing experiences with clarity and proportion</h2>
-      <p>Scroll down to explore projects. Click any to see details.</p>
-    </section>
-
-    <section id="projects" class="gallery">
-      <div class="card" data-project="project1">
-        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80" alt="Project 1" />
-        <h3>Project One</h3>
+    <section class="carousel">
+      <div class="slides">
+        <div class="slide" style="background-color:#ff00ff;">
+          <div class="caption"><h2>Project One</h2><p>2024 | Architecture</p></div>
+        </div>
+        <div class="slide" style="background-color:#00ffff;">
+          <div class="caption"><h2>Project Two</h2><p>2023 | Model Making</p></div>
+        </div>
+        <div class="slide" style="background-color:#ff0000;">
+          <div class="caption"><h2>Project Three</h2><p>2022 | Installation</p></div>
+        </div>
+        <div class="slide" style="background-color:#00ff00;">
+          <div class="caption"><h2>Project Four</h2><p>2021 | Art Direction</p></div>
+        </div>
+        <div class="slide" style="background-color:#0000ff;">
+          <div class="caption"><h2>Project Five</h2><p>2020 | Research</p></div>
+        </div>
       </div>
-      <div class="card" data-project="project2">
-        <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1000&q=80" alt="Project 2" />
-        <h3>Project Two</h3>
-      </div>
+      <button class="nav prev">‹</button>
+      <button class="nav next">›</button>
     </section>
   </main>
 
-  <!-- Horizontal Project Viewer -->
-  <div id="project-viewer" class="project-viewer hidden">
-    <button id="closeViewer">✕</button>
-    <div class="slider">
-      <div class="slide"><img id="slide1" src="" alt=""/></div>
-      <div class="slide"><img id="slide2" src="" alt=""/></div>
-      <div class="slide"><img id="slide3" src="" alt=""/></div>
+  <!-- Modal -->
+  <div id="detailModal" class="modal hidden">
+    <div class="backdrop"></div>
+    <div class="modal-body">
+      <button class="close" id="closeBtn">×</button>
+      <img id="modalImage" src="" alt="Project image"/>
+      <div class="modal-text">
+        <h2 id="modalTitle">Project Title</h2>
+        <p id="modalMeta">2024 | Architecture</p>
+        <p id="modalDesc">Placeholder description for the selected project. You can include additional text, images, or video here, displayed inline without leaving the homepage.</p>
+      </div>
     </div>
   </div>
-
-  <footer>
-    <p>© <span id="year"></span> Your Name</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
