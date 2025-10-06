@@ -1,63 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tom Henly — Carousel Portfolio</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="wrap">
       <span class="brand">Tom Henly</span>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <nav><a href="#about">About</a><a href="#contact">Contact</a></nav>
     </div>
   </header>
 
   <main>
-    <section class="carousel">
+    <section class="carousel" id="carouselSection">
       <div class="slides">
-        <div class="slide" data-id="project1" style="background-color:#ff00ff;">
-          <div class="caption"><h2>Project One</h2><p>2024 | Architecture</p></div>
+        <div class="slide"
+          data-year="2024" data-type="Architecture"
+          data-desc="An exploration of structure and light."
+          style="background:#ff00ff;">
+          <div class="caption">
+            <h2>Project One</h2><p>2024 | Architecture</p>
+            <div class="view-more-cue">View More ⌄</div>
+          </div>
         </div>
-        <div class="slide" data-id="project2" style="background-color:#00ffff;">
-          <div class="caption"><h2>Project Two</h2><p>2023 | Model Making</p></div>
+        <div class="slide"
+          data-year="2023" data-type="Model Making"
+          data-desc="Digital and tactile studies."
+          style="background:#00ffff;">
+          <div class="caption">
+            <h2>Project Two</h2><p>2023 | Model Making</p>
+            <div class="view-more-cue">View More ⌄</div>
+          </div>
         </div>
-        <div class="slide" data-id="project3" style="background-color:#ff0000;">
-          <div class="caption"><h2>Project Three</h2><p>2022 | Installation</p></div>
-        </div>
-        <div class="slide" data-id="project4" style="background-color:#00ff00;">
-          <div class="caption"><h2>Project Four</h2><p>2021 | Art Direction</p></div>
-        </div>
-        <div class="slide" data-id="project5" style="background-color:#0000ff;">
-          <div class="caption"><h2>Project Five</h2><p>2020 | Research</p></div>
+        <div class="slide"
+          data-year="2022" data-type="Installation"
+          data-desc="Immersive exhibitions and installations."
+          style="background:#ff0000;">
+          <div class="caption">
+            <h2>Project Three</h2><p>2022 | Installation</p>
+            <div class="view-more-cue">View More ⌄</div>
+          </div>
         </div>
       </div>
-      <button class="nav prev">‹</button>
-      <button class="nav next">›</button>
+    </section>
+
+    <section id="detailPanel" class="detail-panel hidden">
+      <div class="detail-wrap">
+        <div class="detail-content">
+          <h2 id="detailTitle"></h2>
+          <p id="detailMeta"></p>
+          <p id="detailDesc"></p>
+        </div>
+      </div>
     </section>
   </main>
-
-  <!-- Expanded project modal -->
-  <div id="detailModal" class="modal hidden">
-    <div class="backdrop"></div>
-    <div class="modal-body">
-      <button class="close" id="closeBtn">×</button>
-      <div class="modal-media">
-        <img id="modalImage" src="" alt="Project image"/>
-      </div>
-      <div class="modal-text">
-        <h2 id="modalTitle">Project Title</h2>
-        <p id="modalMeta">2024 | Architecture</p>
-        <p id="modalDesc">
-          Placeholder description: this section will show additional photos or embedded media, plus a short project description. The panel expands inline without leaving the homepage, in the vein of BIG.dk’s walkthroughs.
-        </p>
-      </div>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
