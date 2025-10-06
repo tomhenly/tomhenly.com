@@ -1,52 +1,64 @@
-// Year
-document.getElementById("year").innerText = new Date().getFullYear();
+const slides = document.querySelectorAll(".slide");
+const nextBtn = document.querySelector(".next");
+const prevBtn = document.querySelector(".prev");
+let current = 2; // start centered
 
-// Simple demo projects & images
-const PROJECTS = {
-  project1: [
-    "https://images.unsplash.com/photo-1497302347632-904729bc24aa?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1520975918311-6c51a8991a55?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=1600&q=80",
-  ],
-  project2: [
-    "https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1527181152855-fc03fc7949c8?auto=format&fit=crop&w=1600&q=80",
-  ],
-};
+function updateSlides() {
+  slides.forEach((s, i) => s.classList.remove("prev","next","active","hidden"));
 
-// Elements
-const cards = document.querySelectorAll(".card");
-const viewer = document.getElementById("project-viewer");
-const closeBtn = document.getElementById("closeViewer");
-const slides = [
-  document.getElementById("slide1"),
-  document.getElementById("slide2"),
-  document.getElementById("slide3"),
-];
+  // circular index helpers
+  const total = slides.length;
+  const prev = (current - 1 + total) % total;
+  const next = (current + 1) % total;
 
-// Open viewer
-cards.forEach((card) => {
-  card.addEventListener("click", () => {
-    const id = card.dataset.project;
-    const images = PROJECTS[id];
-    if (!images) return;
-    images.forEach((src, i) => (slides[i].src = src));
-    viewer.classList.remove("hidden");
-    document.body.style.overflow = "hidden";
+  slides.forEach((s,i)=>{
+    if(i===current) s.classList.add("active");
+    else if(i===prev) s.classList.add("prev");
+    else if(i===next) s.classList.add("next");
+    else s.classList.add("hidden");
+  });
+}
+
+function nextSlide() {
+  current = (current + 1) % slides.length;
+  updateSlides();
+}
+function prevSlide() {
+  current = (current - 1 + slides.length) % slides.length;
+  updateSlides();
+}
+
+nextBtn.addEventListener("click", nextSlide);
+prevBtn.addEventListener("click", prevSlide);
+
+// Click sides to change
+document.querySelector(".slides").addEventListener("click",(e)=>{
+  const bounds = e.currentTarget.getBoundingClientRect();
+  if(e.clientX > bounds.left + bounds.width/2) nextSlide();
+  else prevSlide();
+});
+
+updateSlides();
+
+/* -------------- Modal logic -------------- */
+const modal = document.getElementById("detailModal");
+const modalImage = document.getElementById("modalImage");
+const modalTitle = document.getElementById("modalTitle");
+const modalMeta = document.getElementById("modalMeta");
+const modalDesc = document.getElementById("modalDesc");
+const closeBtn = document.getElementById("closeBtn");
+
+slides.forEach(slide=>{
+  slide.addEventListener("click", e=>{
+    // open modal only if active
+    if(!slide.classList.contains("active")) return;
+    const color = slide.style.backgroundColor;
+    modalImage.src = `https://placehold.co/900x500/${color.replace("#","")}/ffffff?text=${encodeURIComponent(slide.querySelector("h2").textContent)}`;
+    modalTitle.textContent = slide.querySelector("h2").textContent;
+    modalMeta.textContent = slide.querySelector("p").textContent;
+    modal.classList.remove("hidden");
   });
 });
 
-// Close viewer
-closeBtn.addEventListener("click", () => {
-  viewer.classList.add("hidden");
-  document.body.style.overflow = "";
-});
-
-// Optional: allow Esc key to close
-window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    viewer.classList.add("hidden");
-    document.body.style.overflow = "";
-  }
-});
+closeBtn.addEventListener("click", ()=> modal.classList.add("hidden"));
+modal.querySelector(".backdrop")?.addEventListener("click", ()=> modal.classList.add("hidden"));
