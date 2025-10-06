@@ -1,32 +1,38 @@
 *,*::before,*::after{box-sizing:border-box;}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111;background:#fff;height:100vh;overflow:hidden;}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display",
+               "Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:#fff;color:#111;height:100vh;overflow:hidden;
+}
 
-/* header */
+/* ===== Header ===== */
 .site-header{
   position:fixed;top:0;left:0;width:100%;
-  background:rgba(255,255,255,.7);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(0,0,0,.05);
-  z-index:10;
+  background:rgba(255,255,255,.7);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(0,0,0,.05);z-index:10;
+  cursor:pointer;
 }
 .wrap{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;}
 .brand{font-weight:600;}
-nav a{margin-left:2rem;color:#111;text-decoration:none;opacity:.7;}nav a:hover{opacity:1;}
+nav a{margin-left:2rem;color:#111;text-decoration:none;opacity:.7;}
+nav a:hover{opacity:1;}
 
-/* carousel */
+/* ===== Carousel ===== */
 .carousel{
-  height:100vh;display:flex;justify-content:center;align-items:center;perspective:1200px;position:relative;padding-top:4rem;
+  height:100vh;display:flex;justify-content:center;align-items:center;
+  perspective:1200px;position:relative;padding-top:4rem;
 }
 .slides{
-  position:relative;width:75vw;height:65vh;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.33,1,.68,1);
+  position:relative;width:75vw;height:65vh;
+  transform-style:preserve-3d;transition:transform .8s cubic-bezier(.33,1,.68,1);
 }
 .slide{
   position:absolute;top:50%;left:50%;width:60%;height:100%;
   transform-origin:center center;border-radius:20px;
   box-shadow:0 10px 40px rgba(0,0,0,.15);
   color:#fff;display:flex;align-items:flex-end;overflow:hidden;
-  transition:transform .8s cubic-bezier(.33,1,.68,1),opacity .6s ease;
-  cursor:pointer;
+  transition:transform .6s ease,opacity .5s ease;cursor:pointer;
 }
 .caption{padding:2rem;font-weight:500;position:relative;width:100%;}
 .caption h2{margin:0 0 .3rem;font-size:1.5rem;}
@@ -36,27 +42,22 @@ nav a{margin-left:2rem;color:#111;text-decoration:none;opacity:.7;}nav a:hover{o
 .slide.next{transform:translate(50%,-50%) scale(.8) rotateY(-25deg);opacity:.6;z-index:1;}
 .slide.active{transform:translate(-50%,-50%) scale(1) rotateY(0);z-index:5;}
 .slide.focus{transform:translate(-50%,-50%) scale(1.1);z-index:10;}
-.slide.dim{opacity:.3;pointer-events:none;}
+.slide.dim{opacity:.25;filter:blur(2px);pointer-events:none;}
 
-/* view-more cue */
+/* ===== 'View More' cue ===== */
 .view-more-cue{
-  position:absolute;
-  bottom:0.8rem;right:1.5rem;
-  font-size:0.9rem;
-  background:rgba(255,255,255,.2);
-  padding:0.2rem 0.6rem;
-  border-radius:1rem;
-  opacity:0;
-  transition:opacity .4s ease,transform .4s ease;
+  position:absolute;bottom:.8rem;right:1.5rem;font-size:.85rem;
+  background:rgba(255,255,255,.25);padding:.2rem .6rem;border-radius:1rem;
+  opacity:0;transition:opacity .4s ease,transform .4s ease;text-shadow:0 1px 1px rgba(0,0,0,.2);
 }
-.slide.focus .view-more-cue{opacity:1;transform:translateY(0);}
+.slide.focus .view-more-cue{opacity:1;animation:arrowHint 2s infinite;}
 .slide.active .view-more-cue{opacity:.7;}
-.view-more-cue:hover{background:rgba(255,255,255,.35);}
+.view-more-cue:hover{background:rgba(255,255,255,.4);}
+@keyframes arrowHint{0%,100%{transform:translateY(0);}50%{transform:translateY(4px);}}
 
-/* inline detail */
+/* ===== Inline detail ===== */
 .detail-panel{
-  position:absolute;left:0;right:0;bottom:0;
-  background:#fafafa;
+  position:absolute;left:0;right:0;bottom:0;background:#fafafa;
   border-top:1px solid rgba(0,0,0,.05);
   max-height:0;opacity:0;overflow:hidden;
   transition:max-height .6s ease,opacity .4s ease;
@@ -65,3 +66,13 @@ nav a{margin-left:2rem;color:#111;text-decoration:none;opacity:.7;}nav a:hover{o
 .detail-wrap{max-width:900px;margin:0 auto;padding:2rem;}
 .detail-content h2{margin:0 0 .5rem;font-size:1.5rem;}
 .detail-content p{line-height:1.6;margin:.3rem 0;}
+
+/* ===== UI hints & progress ===== */
+.ui-hints{
+  position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);
+  text-align:center;font-size:.8rem;color:#444;z-index:50;pointer-events:none;
+}
+.progress-dots{display:flex;justify-content:center;gap:.4rem;margin-bottom:.4rem;}
+.progress-dots span{width:.5rem;height:.5rem;border-radius:50%;background:#ccc;transition:background .3s;}
+.progress-dots span.active{background:#333;}
+.key-hint{opacity:.5;font-size:.75rem;letter-spacing:.02em;}
