@@ -1,16 +1,17 @@
 const slides = document.querySelectorAll(".slide");
-const nextBtn = document.querySelector(".next");
-const prevBtn = document.querySelector(".prev");
-let current = 2; // start centered
+const detailPanel = document.getElementById("detailPanel");
+const detailTitle = document.getElementById("detailTitle");
+const detailMeta  = document.getElementById("detailMeta");
+const detailDesc  = document.getElementById("detailDesc");
 
-function updateSlides() {
-  slides.forEach((s, i) => s.classList.remove("prev","next","active","hidden"));
+let current = 0;
+let stage = "carousel"; // "carousel" | "focused" | "inline"
 
-  // circular index helpers
-  const total = slides.length;
-  const prev = (current - 1 + total) % total;
-  const next = (current + 1) % total;
-
+function updateSlides(){
+  const total=slides.length;
+  slides.forEach(s=>s.classList.remove("prev","next","active","hidden"));
+  const prev=(current-1+total)%total;
+  const next=(current+1)%total;
   slides.forEach((s,i)=>{
     if(i===current) s.classList.add("active");
     else if(i===prev) s.classList.add("prev");
@@ -18,47 +19,71 @@ function updateSlides() {
     else s.classList.add("hidden");
   });
 }
-
-function nextSlide() {
-  current = (current + 1) % slides.length;
-  updateSlides();
-}
-function prevSlide() {
-  current = (current - 1 + slides.length) % slides.length;
-  updateSlides();
-}
-
-nextBtn.addEventListener("click", nextSlide);
-prevBtn.addEventListener("click", prevSlide);
-
-// Click sides to change
-document.querySelector(".slides").addEventListener("click",(e)=>{
-  const bounds = e.currentTarget.getBoundingClientRect();
-  if(e.clientX > bounds.left + bounds.width/2) nextSlide();
-  else prevSlide();
-});
-
 updateSlides();
 
-/* -------------- Modal logic -------------- */
-const modal = document.getElementById("detailModal");
-const modalImage = document.getElementById("modalImage");
-const modalTitle = document.getElementById("modalTitle");
-const modalMeta = document.getElementById("modalMeta");
-const modalDesc = document.getElementById("modalDesc");
-const closeBtn = document.getElementById("closeBtn");
+function nextSlide(){if(stage!=="carousel")return;current=(current+1)%slides.length;updateSlides();}
+function prevSlide(){if(stage!=="carousel")return;current=(current-1+slides.length)%slides.length;updateSlides();}
 
-slides.forEach(slide=>{
-  slide.addEventListener("click", e=>{
-    // open modal only if active
-    if(!slide.classList.contains("active")) return;
-    const color = slide.style.backgroundColor;
-    modalImage.src = `https://placehold.co/900x500/${color.replace("#","")}/ffffff?text=${encodeURIComponent(slide.querySelector("h2").textContent)}`;
-    modalTitle.textContent = slide.querySelector("h2").textContent;
-    modalMeta.textContent = slide.querySelector("p").textContent;
-    modal.classList.remove("hidden");
+slides.forEach((s,i)=>{
+  // clicking body of slide
+  s.addEventListener("click",()=>{
+    if(stage==="carousel"){ focusSlide(i); current=i; updateSlides(); }
+  });
+  // clicking view-more cue opens inline directly
+  s.querySelector(".view-more-cue").addEventListener("click",e=>{
+    e.stopPropagation();
+    if(stage==="carousel"){focusSlide(i);}
+    openInline();
   });
 });
 
-closeBtn.addEventListener("click", ()=> modal.classList.add("hidden"));
-modal.querySelector(".backdrop")?.addEventListener("click", ()=> modal.classList.add("hidden"));
+function focusSlide(i){
+  stage="focused";
+  const slide=slides[i];
+  slide.classList.add("focus");
+  slides.forEach((el,idx)=>{ if(idx!==i) el.classList.add("dim"); });
+  detailTitle.textContent=slide.querySelector("h2").textContent;
+  detailMeta.textContent=`${slide.dataset.year} | ${slide.dataset.type}`;
+  detailDesc.textContent=slide.dataset.desc;
+}
+function unfocusSlide(){ stage="carousel"; slides.forEach(s=>s.classList.remove("focus","dim")); }
+
+function openInline(){
+  if(stage==="inline")return;
+  stage="inline";
+  detailPanel.classList.remove("hidden");
+  requestAnimationFrame(()=>detailPanel.classList.add("open"));
+}
+function closeInline(){
+  if(stage!=="inline")return;
+  stage="focused";
+  detailPanel.classList.remove("open");
+  setTimeout(()=>detailPanel.classList.add("hidden"),400);
+}
+
+/* handle scrolling as stage machine */
+function onScroll(dir){
+  if(stage==="carousel"){
+     if(dir==="down") nextSlide();
+     else if(dir==="up") prevSlide();
+  }else if(stage==="focused"){
+     if(dir==="down") openInline();
+     else if(dir==="up") unfocusSlide();
+  }else if(stage==="inline" && dir==="up"){
+     closeInline();
+  }
+}
+window.addEventListener("wheel",e=>{
+  const d=e.deltaY>30?"down":e.deltaY<-30?"up":null;
+  if(d) onScroll(d);
+},{passive:true});
+
+let touchStartY=0,touchEndY=0;
+window.addEventListener("touchstart",e=>{touchStartY=e.touches[0].clientY;},{passive:true});
+window.addEventListener("touchmove",e=>{touchEndY=e.touches[0].clientY;},{passive:true});
+window.addEventListener("touchend",()=>{
+  const diff=touchStartY-touchEndY;
+  if(Math.abs(diff)<40)return;
+  const dir=diff>0?"down":"up";
+  onScroll(dir);
+});
