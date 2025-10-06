@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Tom Henly — Carousel Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <header class="site-header">
+  <header id="siteHeader" class="site-header">
     <div class="wrap">
       <span class="brand">Tom Henly</span>
       <nav><a href="#about">About</a><a href="#contact">Contact</a></nav>
@@ -15,38 +15,43 @@
   </header>
 
   <main>
-    <section class="carousel" id="carouselSection">
+    <!-- ===== Carousel ===== -->
+    <section class="carousel">
       <div class="slides">
         <div class="slide"
           data-year="2024" data-type="Architecture"
-          data-desc="An exploration of structure and light."
+          data-desc="An exploration of structure, form and light."
           style="background:#ff00ff;">
           <div class="caption">
-            <h2>Project One</h2><p>2024 | Architecture</p>
+            <h2>Project One</h2>
+            <p>2024 | Architecture</p>
             <div class="view-more-cue">View More ⌄</div>
           </div>
         </div>
         <div class="slide"
           data-year="2023" data-type="Model Making"
-          data-desc="Digital and tactile studies."
+          data-desc="Digital fabrication and tactile model studies."
           style="background:#00ffff;">
           <div class="caption">
-            <h2>Project Two</h2><p>2023 | Model Making</p>
+            <h2>Project Two</h2>
+            <p>2023 | Model Making</p>
             <div class="view-more-cue">View More ⌄</div>
           </div>
         </div>
         <div class="slide"
           data-year="2022" data-type="Installation"
-          data-desc="Immersive exhibitions and installations."
+          data-desc="Immersive installations exploring public interaction."
           style="background:#ff0000;">
           <div class="caption">
-            <h2>Project Three</h2><p>2022 | Installation</p>
+            <h2>Project Three</h2>
+            <p>2022 | Installation</p>
             <div class="view-more-cue">View More ⌄</div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ===== Inline Detail Area ===== -->
     <section id="detailPanel" class="detail-panel hidden">
       <div class="detail-wrap">
         <div class="detail-content">
@@ -56,6 +61,12 @@
         </div>
       </div>
     </section>
+
+    <!-- ===== UI hints & progress dots ===== -->
+    <div class="ui-hints">
+      <div class="progress-dots"></div>
+      <div class="key-hint">Scroll • Click • ← / →  • Esc</div>
+    </div>
   </main>
 
   <script src="script.js"></script>
