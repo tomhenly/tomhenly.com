@@ -4,17 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tom Henly</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --bg: #ffffff;
       --ink: #111111;
-      --muted: #888888;
-      --rule: #e5e5e5;
+      --muted: #777777;
+      --faint: #aaaaaa;
+      --rule: #e8e8e8;
+      --accent: #A8C8E8;
     }
 
     body {
@@ -27,41 +28,95 @@
     }
 
     .page {
-      max-width: 600px;
+      max-width: 680px;
       margin: 0 auto;
-      padding: 80px 24px 120px;
+      padding: 72px 24px 120px;
     }
 
-    /* Header */
+    /* ── HEADER ── */
     header {
-      margin-bottom: 72px;
+      margin-bottom: 64px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--rule);
     }
 
-    h1 {
-      font-size: 1rem;
-      font-weight: 400;
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
       margin-bottom: 20px;
     }
 
-    .tagline {
-      color: var(--muted);
-      max-width: 420px;
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
     }
 
-    /* Sections */
+    .header-location {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+
+    .header-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .header-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .header-links a:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    /* ── SECTION ── */
     section {
       margin-bottom: 56px;
     }
 
     .label {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 20px;
+      color: var(--faint);
+      margin-bottom: 24px;
     }
 
-    /* Experience */
+    /* ── PROFILE ── */
+    .profile {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    .profile strong {
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    /* ── ITEMS ── */
     .item {
       padding: 20px 0;
       border-top: 1px solid var(--rule);
@@ -74,42 +129,101 @@
     .item-header {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 4px;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 3px;
     }
 
     .item-title {
       font-weight: 400;
+      font-size: 0.95rem;
     }
 
     .item-date {
-      color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--faint);
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .item-sub {
+      font-size: 0.85rem;
       color: var(--muted);
       margin-bottom: 8px;
-      font-size: 0.9rem;
+      font-style: italic;
     }
 
     .item-desc {
-      font-size: 0.9rem;
-      color: #444;
+      font-size: 0.88rem;
+      color: #555;
+      line-height: 1.65;
+      max-width: 520px;
     }
 
-    /* Skills */
-    .skills {
+    .item-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .item-link:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    .item-link::after {
+      content: ' ↗';
+    }
+
+    /* ── AWARDS ── */
+    .award-item {
       display: flex;
-      flex-direction: column;
-      gap: 8px;
+      gap: 20px;
+      padding: 16px 0;
+      border-top: 1px solid var(--rule);
+      align-items: baseline;
     }
 
+    .award-item:last-child {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .award-year {
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--faint);
+      width: 36px;
+      flex-shrink: 0;
+    }
+
+    .award-body {}
+
+    .award-title {
+      font-size: 0.92rem;
+      font-weight: 400;
+      margin-bottom: 2px;
+    }
+
+    .award-org {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ── SKILLS ── */
     .skill-row {
       display: flex;
-      gap: 12px;
-      align-items: baseline;
-      padding: 8px 0;
+      gap: 20px;
+      padding: 14px 0;
       border-top: 1px solid var(--rule);
+      align-items: baseline;
     }
 
     .skill-row:last-child {
@@ -117,34 +231,263 @@
     }
 
     .skill-cat {
-      color: var(--muted);
-      font-size: 0.8rem;
-      width: 140px;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--faint);
+      width: 120px;
       flex-shrink: 0;
     }
 
     .skill-items {
-      font-size: 0.9rem;
-      color: #444;
+      font-size: 0.88rem;
+      color: #555;
+      line-height: 1.6;
     }
 
-    /* Interests */
-    .interests {
-      color: #444;
-      font-size: 0.9rem;
+    /* ── PROJECTS GRID ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
     }
 
-    /* Contact */
-    .contact-list {
-      list-style: none;
+    .project-card {
+      background: var(--bg);
+      padding: 24px;
+      text-decoration: none;
+      color: var(--ink);
+      transition: background 0.2s;
+      display: block;
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      background: #f9f9f9;
+    }
+
+    .project-card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #f0f0f0;
+      margin-bottom: 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover .project-card-img img {
+      transform: scale(1.03);
+    }
+
+    .img-placeholder {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .project-card-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 6px;
+    }
+
+    .project-card-title {
+      font-size: 0.92rem;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+
+    .project-card-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .project-card-open {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
+      transition: color 0.2s;
+    }
+
+    .project-card:hover .project-card-open {
+      color: var(--ink);
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 880px;
+      width: 100%;
+      max-height: 90vh;
       display: flex;
       flex-direction: column;
+    }
+
+    .lightbox-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 20px;
+    }
+
+    .lightbox-title {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      color: #ffffff;
+      letter-spacing: 0.01em;
+    }
+
+    .lightbox-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-right: auto;
+      margin-left: 16px;
+    }
+
+    .lightbox-close {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 4px 8px;
+      transition: color 0.2s;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+    }
+
+    .lightbox-close:hover {
+      color: #ffffff;
+    }
+
+    .lightbox-img-wrap {
+      width: 100%;
+      max-height: 65vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .lightbox-img-wrap img {
+      max-width: 100%;
+      max-height: 65vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .lightbox-placeholder {
+      width: 100%;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1a1a1a;
+      color: rgba(255,255,255,0.2);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .lightbox-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .lightbox-caption {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 300;
+      flex: 1;
+    }
+
+    .lightbox-nav {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .lightbox-btn {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.6);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+
+    .lightbox-btn:hover {
+      border-color: rgba(255,255,255,0.6);
+      color: #ffffff;
+    }
+
+    .lightbox-btn:disabled {
+      opacity: 0.2;
+      cursor: default;
+    }
+
+    .lightbox-count {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.3);
+      min-width: 40px;
+      text-align: center;
+    }
+
+    /* ── CONTACT ── */
+    .contact-list {
+      list-style: none;
     }
 
     .contact-list li {
       display: flex;
       gap: 20px;
-      padding: 10px 0;
+      padding: 12px 0;
       border-top: 1px solid var(--rule);
       align-items: baseline;
     }
@@ -153,108 +496,350 @@
       border-bottom: 1px solid var(--rule);
     }
 
-    .contact-list .cat {
-      color: var(--muted);
-      font-size: 0.8rem;
+    .contact-cat {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
       width: 80px;
       flex-shrink: 0;
     }
 
     .contact-list a {
+      font-size: 0.88rem;
       color: var(--ink);
       text-decoration: none;
-      font-size: 0.9rem;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      transition: border-color 0.2s;
     }
 
     .contact-list a:hover {
-      text-decoration: underline;
+      border-color: var(--ink);
     }
 
     .contact-list span {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 560px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .header-top { flex-direction: column; gap: 8px; }
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
 <div class="page">
 
+  <!-- HEADER -->
   <header>
-    <h1>Tom Henly</h1>
-    <p class="tagline">Designer and maker. Background in architecture, working in fabrication and prototyping.</p>
+    <div class="header-top">
+      <h1>Tom Henly</h1>
+    </div>
+    <p class="tagline">Designer and maker, currently working as a <strong>Research Technician (Mechanical) at the University of Bristol.</strong> RIBA award winner. Hands-on experience across fabrication, design, and prototyping. Interested in precision, materials, and the practical realisation of ideas.</p>
+    <div class="header-links">
+      <a href="mailto:tom@tomhenly.com">Email</a>
+      <a href="https://www.linkedin.com/in/tomhenly/" target="_blank">LinkedIn</a>
+    </div>
   </header>
 
-  <section>
+  <!-- PROFILE -->
+  <section class="reveal">
+    <div class="label">Profile</div>
+    <p class="profile">
+      Part 1 Architecture graduate from <strong>The Bartlett, UCL</strong>, currently working as a Research Technician (Mechanical) at the University of Bristol. Strong practical and technical foundation across fabrication, prototyping, and mechanical systems. Experienced in workshop environments - woodwork, metalwork, 3D printing, laser cutting, and manual CNC. Track record of initiating and delivering projects independently. Methodical, hands-on, and comfortable with precision work at any scale.
+    </p>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="reveal">
     <div class="label">Experience</div>
 
     <div class="item">
       <div class="item-header">
         <span class="item-title">Research Technician (Mechanical)</span>
-        <span class="item-date">2025 — now</span>
+        <span class="item-date">2025 - now</span>
       </div>
       <div class="item-sub">University of Bristol</div>
-      <div class="item-desc">Fabrication and prototyping within a small specialist team. Technical support across materials and processes.</div>
+      <p class="item-desc">Fabrication and prototyping within a specialist research team. Technical support across materials, processes, and mechanical systems.</p>
     </div>
 
     <div class="item">
       <div class="item-header">
         <span class="item-title">Architectural Assistant</span>
-        <span class="item-date">2024-2025</span>
+        <span class="item-date">2024 - 2025</span>
       </div>
-      <div class="item-sub">KnoxBhavan Architects</div>
-      <div class="item-desc">Precision fabrication, prototyping and drawing for architects</div>
+      <div class="item-sub">Knox Bhavan Architects, London</div>
+      <p class="item-desc">Architectural assistant role at an award-winning London practice. Contributed to live projects including design development, technical drawing, and model-making. Work selected for the Royal Academy Summer Exhibition.</p>
     </div>
 
     <div class="item">
       <div class="item-header">
-        <span class="item-title">Architecture BSc</span>
-        <span class="item-date">2021 — 2024</span>
+        <span class="item-title">Stage & Set Design</span>
+        <span class="item-date">2024</span>
       </div>
-      <div class="item-sub">The Bartlett School of Architecture, UCL</div>
-      <div class="item-desc">BSc Architecture. Award-winning studio project.</div>
+      <div class="item-sub">Wibbly Woods Festival - with Loci Design Collective</div>
+      <p class="item-desc">Stage and set design for an outdoor festival, working as part of a design collective. Responsible for concept development through to physical realisation on site.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">Summer Show Coordinator</span>
+        <span class="item-date">2022 - 2024</span>
+      </div>
+      <div class="item-sub">Bartlett School of Architecture, UCL</div>
+      <p class="item-desc">Led exhibition design and manufacture for the annual Bartlett Summer Show across three consecutive years. Responsible for curation, project management, budgeting, and physical installation.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">Founder, RELAY Series</span>
+        <span class="item-date">2022 - 2024</span>
+      </div>
+      <div class="item-sub">Bartlett School of Architecture, UCL</div>
+      <p class="item-desc">Initiated and organised a recurring event series connecting architecture students across year groups with alumni. Secured UCL funding, coordinated with staff, and grew attendance to 30+ per event.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">Work Experience</span>
+        <span class="item-date">2018 - 2019</span>
+      </div>
+      <div class="item-sub">HS2 / Greater London Authority / BT Group</div>
+      <p class="item-desc">Placements across infrastructure, public sector, and telecoms. Exposure to large-scale project environments at an early stage.</p>
     </div>
 
   </section>
 
-  <section>
+  <!-- AWARDS -->
+  <section class="reveal">
+    <div class="label">Awards</div>
+
+    <div class="award-item">
+      <span class="award-year">2022</span>
+      <div class="award-body">
+        <div class="award-title">RIBA London Student Award</div>
+        <div class="award-org">Royal Institute of British Architects</div>
+      </div>
+    </div>
+
+    <div class="award-item">
+      <span class="award-year">2022</span>
+      <div class="award-body">
+        <div class="award-title">Summer Show Prizewinner - Recycling & Response to Local Fabric</div>
+        <div class="award-org">Bartlett School of Architecture, UCL</div>
+      </div>
+    </div>
+
+    <div class="award-item">
+      <span class="award-year">2024</span>
+      <div class="award-body">
+        <div class="award-title">Work selected for the Royal Academy Summer Exhibition</div>
+        <div class="award-org">Royal Academy of Arts, London</div>
+      </div>
+    </div>
+
+  </section>
+
+   <!-- SKILLS -->
+  <section class="reveal">
     <div class="label">Skills</div>
-    <div class="skills">
-      <div class="skill-row">
-        <span class="skill-cat">Fabrication</span>
-        <span class="skill-items">Workshop machinery, CNC, model-making, materials</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-cat">3D & Drawing</span>
-        <span class="skill-items">Rhino, technical drawing, flat pattern development</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-cat">Design</span>
-        <span class="skill-items">Brand identity, client communication, visual systems</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-cat">Technical</span>
-        <span class="skill-items">Rapid prototyping, mechanical reasoning</span>
-      </div>
+    <div class="skill-row">
+      <span class="skill-cat">Workshop</span>
+      <span class="skill-items">Model-making, woodwork, metalwork, 3D printing, laser cutting, manual CNC milling, lathes</span>
+    </div>
+    <div class="skill-row">
+      <span class="skill-cat">Digital</span>
+      <span class="skill-items">Rhino 8, Grasshopper, AutoCAD, Fusion 360, VRay, Indesign, Photoshop, Illustrator, Lightroom</span>
+    </div>
+    <div class="skill-row">
+      <span class="skill-cat">Design</span>
+      <span class="skill-items">Technical drawing, hand drawing, graphic design, exhibition design, set design</span>
+    </div>
+    <div class="skill-row">
+      <span class="skill-cat">Photography</span>
+      <span class="skill-items">Professional digital and film - competent across both</span>
     </div>
   </section>
 
-  <section>
+  <!-- EDUCATION -->
+  <section class="reveal">
+    <div class="label">Education</div>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">BSc Architecture</span>
+        <span class="item-date">2021 - 2024</span>
+      </div>
+      <div class="item-sub">The Bartlett School of Architecture, UCL - London</div>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">Diploma in Foundation Studies (Art & Design)</span>
+        <span class="item-date">2020 - 2021</span>
+      </div>
+      <div class="item-sub">Wiltshire College</div>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">A-Levels - Mathematics, Physics, Photography</span>
+        <span class="item-date">2018 - 2020</span>
+      </div>
+      <div class="item-sub">Beechen Cliff School, Bath</div>
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+  <section class="reveal">
     <div class="label">Contact</div>
     <ul class="contact-list">
       <li>
-        <span class="cat">Email</span>
+        <span class="contact-cat">Email</span>
         <a href="mailto:tom@tomhenly.com">tom@tomhenly.com</a>
       </li>
       <li>
-        <span class="cat">LinkedIn</span>
-        <a href="https://www.linkedin.com/in/tomhenly">www.linkedin.com/in/tomhenly</a>
+        <span class="contact-cat">Phone</span>
+        <span>+44 7503 477498</span>
       </li>
       <li>
-        <span class="cat">Based</span>
-        <span>Bath, UK</span>
+        <span class="contact-cat">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/tomhenly/" target="_blank">linkedin.com/in/tomhenly</a>
+      </li>
+      <li>
+        <span class="contact-cat">Based</span>
+        <span>UK</span>
       </li>
     </ul>
   </section>
 
 </div>
+
+<script>
+  // ── SCROLL REVEAL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── LIGHTBOX DATA ──
+  // To add images: replace the src arrays with real paths e.g. 'images/knox-01.jpg'
+  // Each image can have its own caption
+  const projects = [
+    {
+      title: 'Knox Bhavan - Live Projects',
+      label: 'Architecture',
+      images: [
+        { src: null, caption: 'Technical drawings and models' },
+        { src: null, caption: 'RA Summer Exhibition piece' },
+        { src: null, caption: 'Design development work' },
+      ]
+    },
+    {
+      title: 'Recycling & Response to Local Fabric',
+      label: 'Bartlett - Award-winning',
+      images: [
+        { src: null, caption: 'RIBA award-winning project, 2022' },
+        { src: null, caption: 'Bartlett Summer Show prizewinner' },
+        { src: null, caption: 'Model and drawings' },
+      ]
+    },
+    {
+      title: 'Bartlett Summer Shows 2022-24',
+      label: 'Exhibition Design',
+      images: [
+        { src: null, caption: 'Summer Show 2022' },
+        { src: null, caption: 'Summer Show 2023' },
+        { src: null, caption: 'Summer Show 2024' },
+      ]
+    },
+    {
+      title: 'Wibbly Woods Festival 2024',
+      label: 'Set Design',
+      images: [
+        { src: null, caption: 'Stage design with Loci Design Collective' },
+        { src: null, caption: 'On-site build' },
+        { src: null, caption: 'Finished installation' },
+      ]
+    }
+  ];
+
+  let currentProject = 0;
+  let currentImage = 0;
+
+  function openLightbox(projectIndex) {
+    currentProject = projectIndex;
+    currentImage = 0;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    renderLightbox();
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function handleLightboxClick(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+  }
+
+  function changeImage(dir) {
+    const project = projects[currentProject];
+    currentImage = Math.max(0, Math.min(project.images.length - 1, currentImage + dir));
+    renderLightbox();
+  }
+
+  function renderLightbox() {
+    const project = projects[currentProject];
+    const img = project.images[currentImage];
+    const total = project.images.length;
+
+    document.getElementById('lb-title').textContent = project.title;
+    document.getElementById('lb-label').textContent = project.label;
+    document.getElementById('lb-caption').textContent = img.caption;
+    document.getElementById('lb-count').textContent = (currentImage + 1) + ' / ' + total;
+    document.getElementById('lb-prev').disabled = currentImage === 0;
+    document.getElementById('lb-next').disabled = currentImage === total - 1;
+
+    const wrap = document.getElementById('lb-img-wrap');
+    if (img.src) {
+      wrap.innerHTML = '<img src="' + img.src + '" alt="' + img.caption + '">';
+    } else {
+      wrap.innerHTML = '<div class="lightbox-placeholder">Image coming soon</div>';
+    }
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') changeImage(-1);
+    if (e.key === 'ArrowRight') changeImage(1);
+  });
+</script>
+
 </body>
 </html>
